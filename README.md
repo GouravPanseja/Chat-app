@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+The data Structures for storage for this app:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Two collections:
+1. userChats
+2. chats
 
-## Available Scripts
+userChats:- It is used to show the recent chats of a user ie people with whom the user has selected to chat. These all userChats appear in the sidebar in 'chats' component.
 
-In the project directory, you can run:
+CREATION OF DOCUMENT FOR EACH USER IN THE USERCHATS
+When the user is created , a document with id same as its 'uid' is created in the userChats collection. but is kept empty
 
-### `npm start`
+UPDATING THE DOCUMENT FOR EACH USER IN USERCHATS
+when a user searches for a user and selects it,its document in the userChats is updated with this structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+combinedId:{
+    data: serverTimestamp(),
+    userInfo{
+        // info the user selected by the currentUser
+        uid:
+        email:
+        photoURL:
+    }
+}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ACCESSING THE USERCHAT
+When a user must visit the homepage he must see all his chats in the sidebar, therefore, we set a listener on this document of the document of user in userChat and access all the fields in the document.
 
-### `npm test`
+Then the data obtained is converted into arrays of array
+where each subarrays contains the currentUser's different chats in this format 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[  
+    // key ,value
+    [combinedId, { data :--- , userInfo:{---} } ] // 1st chat 
+    [combinedId, { data :--- , userInfo:{---} } ] // 2nd chat
+]
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
