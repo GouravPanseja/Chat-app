@@ -25,14 +25,14 @@ function Register() {
         e.preventDefault();
         
         // extracting values of the input 
-        const name = e?.target[0]?.value;
-        const email = e?.target[1]?.value;
-        const password = e?.target[2]?.value;
-        const file = e?.target[3]?.files[0];
+        const name = e.target[0].value;
+        const email = e.target[1].value;
+        const password = e.target[2].value;
+        const file = e.target[3].files[0];
 
         
         if(!file){
-            displayText("No file added")
+            displayText("No image added")
             return;
         } 
         console.log(file.name);
@@ -85,7 +85,7 @@ function Register() {
     }
     return (
         <div className="formContainer bg-slate-400 min-h-screen flex justify-center items-center tex-white">
-            <div className="formWrapper h-[30vw] flex flex-col w-[28vw] bg-white  p-5 rounded-md justify-between  items-center">
+            <div className="formWrapper h-[30vw] flex flex-col md:w-[90vw] sm:w-[90vw] w-[28vw] bg-white  p-5 rounded-md justify-between  items-center">
              
                 <span className="logo mb-0"> Chat Box </span>
                 <span className="title text-xs mt-0 text-slate-4 00">Register</span>
@@ -95,7 +95,7 @@ function Register() {
                     <input className="border-b shadow-b shadow-sm rounded p-[2px]" type="text" placeholder="name..."/>
                     <input className="border-b shadow-b shadow-sm rounded p-[2px]" type="email" placeholder="email.."/>
                     <input className="border-b shadow-b shadow-sm rounded p-[2px]" type="password" placeholder="password..."/>
-                    <input className="hidden " type="file" id="file"/>
+                    <input onChange={(e)=>{ displayText(e.target.files[0]?.name.substring(0,7) + "...")}} className="hidden " type="file" id="file"/>
                     <label htmlFor="file">
                         <div className="w-full flex justify-center">
                             <FaRegImage size={25} className="inline mx-5 cursor-pointer"/> 

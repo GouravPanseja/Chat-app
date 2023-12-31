@@ -19,8 +19,8 @@ function Login(){
         e.preventDefault();
         
         // extracting values of the input 
-        const email = e?.target[0]?.value;
-        const password = e?.target[1]?.value;
+        const email = e.target[0].value;
+        const password = e.target[1].value;
         console.log(email,password);
 
 
