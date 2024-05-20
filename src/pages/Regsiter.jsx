@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import {  ref, uploadBytesResumable, getDownloadURL,uploadBytes } from "firebase/storage";
 import {setDoc, doc} from "firebase/firestore"
 import { useNavigate,Link } from "react-router-dom";
+import bg from "../assets/icons-bg.svg"
 
 
 function Register() {
@@ -84,26 +85,26 @@ function Register() {
 
     }
     return (
-        <div className="formContainer bg-slate-400 min-h-screen flex justify-center items-center tex-white">
-            <div className="formWrapper h-[30vw] flex flex-col md:w-[90vw] sm:w-[90vw] w-[28vw] bg-white  p-5 rounded-md justify-between  items-center">
+        <div className="formContainer overflow-auto min-h-screen flex justify-center bg-black items-center tex-white" style={{backgroundImage:`url(${bg})`}}>
+            <div className="formWrapper h-[30vw] flex flex-col w-[28vw]  p-5 rounded-md justify-between  items-center bg-black" style={{ boxShadow: "0px 1px 5px 3px rgb(239,254,139)"}}>
              
-                <span className="logo mb-0"> Chat Box </span>
-                <span className="title text-xs mt-0 text-slate-4 00">Register</span>
+                <span className="logo mb-0 text-white"> Chat Box </span>
+                <span className="title text-xs mt-0 text-slate-4 text-white">Register</span>
              
                 
                 <form onSubmit={submitHandler} className="flex flex-col h-[70%] justify-around ">
-                    <input className="border-b shadow-b shadow-sm rounded p-[2px]" type="text" placeholder="name..."/>
-                    <input className="border-b shadow-b shadow-sm rounded p-[2px]" type="email" placeholder="email.."/>
-                    <input className="border-b shadow-b shadow-sm rounded p-[2px]" type="password" placeholder="password..."/>
+                    <input className="border-b shadow-b shadow-sm rounded p-[2px] pl-2 " type="text" placeholder="name..."/>
+                    <input className="border-b shadow-b shadow-sm rounded p-[2px] pl-2 " type="email" placeholder="email.."/>
+                    <input className="border-b shadow-b shadow-sm rounded p-[2px] pl-2 " type="password" placeholder="password..."/>
                     <input onChange={(e)=>{ displayText(e.target.files[0]?.name.substring(0,7) + "...")}} className="hidden " type="file" id="file"/>
                     <label htmlFor="file">
                         <div className="w-full flex justify-center">
-                            <FaRegImage size={25} className="inline mx-5 cursor-pointer"/> 
-                            <span className=" mx-5 cursor-pointer">upload an image</span>  
+                            <FaRegImage size={25} className="inline mx-5 cursor-pointer text-white"/> 
+                            <span className=" mx-5 cursor-pointer text-white">upload an image</span>  
                         </div>
                     </label>
-                    <button className="bg-slate-300 rounded p-1 w-[50%] mx-auto relative h-[50px] flex justify-center items-center">{loading ? <Loader/> : "Sign up"}</button>
-                    <p  className="text-sm">Already have an account? <Link to= "/login" >Login</Link> </p>
+                    <button className="bg-slate-300 rounded p-1 w-[50%] mx-auto relative h-[50px] flex justify-center items-center text-white">{loading ? <Loader/> : "Sign up"}</button>
+                    <p  className="text-sm text-white">Already have an account? <Link to= "/login" >Login</Link> </p>
                 </form>
                <div ref={display} className="h-[20px] "> </div>
             </div>
